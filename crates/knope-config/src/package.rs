@@ -24,6 +24,30 @@ pub struct Package {
     pub assets: Option<Assets>,
     #[serde(default, skip_serializing_if = "<&bool>::not")]
     pub ignore_go_major_versioning: bool,
+    /// What kind of bump this package gets when one of its internal monorepo dependencies bumps.
+    #[serde(default, skip_serializing_if = "InternalDependencyUpdate::is_default")]
+    pub update_internal_dependencies: InternalDependencyUpdate,
+}
+
+/// Policy for how this package is versioned when one of its internal monorepo dependencies
+/// receives a release.
+#[derive(Clone, Copy, Debug, Default, Deserialize, Eq, Hash, PartialEq, Serialize)]
+#[serde(rename_all = "lowercase")]
+pub enum InternalDependencyUpdate {
+    /// Don't bump this package when an internal dependency bumps.
+    None,
+    /// Bump this package as a patch release when an internal dependency bumps.
+    #[default]
+    Patch,
+    /// Bump this package as a minor release when an internal dependency bumps.
+    Minor,
+}
+
+impl InternalDependencyUpdate {
+    #[must_use]
+    pub fn is_default(&self) -> bool {
+        matches!(self, Self::Patch)
+    }
 }
 
 /// A type that deserializes from either a single regex string or an array of regex strings.

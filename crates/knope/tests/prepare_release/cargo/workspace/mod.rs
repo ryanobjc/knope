@@ -1,3 +1,8 @@
 mod full;
+mod internal_dependency_updates;
+mod internal_dependency_updates_minor;
+mod internal_dependency_updates_none;
+mod internal_dependency_updates_transitive;
+mod internal_dependency_updates_with_changelog;
 mod no_lock;
 mod shared_version;

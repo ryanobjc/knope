@@ -3,7 +3,7 @@ use std::{fmt, fmt::Display, path::PathBuf};
 use changesets::PackageChange;
 use indexmap::IndexMap;
 use itertools::Itertools;
-use knope_config::{Assets, changelog_section::convert_to_versioning};
+use knope_config::{Assets, InternalDependencyUpdate, changelog_section::convert_to_versioning};
 use knope_versioning::{
     Action, GoVersioning, PackageNewError, VersionedFile, VersionedFileError,
     changes::{CHANGESET_DIR, Change},
@@ -31,6 +31,8 @@ pub(crate) struct Package {
     pub(crate) override_version: Option<Version>,
     pub(crate) assets: Option<Assets>,
     pub(crate) go_versioning: GoVersioning,
+    /// Bump policy when one of this package's internal monorepo dependencies releases.
+    pub(crate) update_internal_dependencies: InternalDependencyUpdate,
 }
 
 impl Package {
@@ -92,6 +94,7 @@ impl Package {
                 GoVersioning::default()
             },
             override_version: None,
+            update_internal_dependencies: package.update_internal_dependencies,
         })
     }
 
@@ -273,6 +276,7 @@ impl Package {
             override_version: None,
             assets: None,
             go_versioning: GoVersioning::default(),
+            update_internal_dependencies: InternalDependencyUpdate::default(),
         }
     }
 }

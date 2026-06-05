@@ -1,16 +1,16 @@
-Would add the following to Cargo.toml: version = 2.0.0, second-package.version = 0.5.0
+Would add the following to Cargo.toml: second-package.version = 0.5.0, version = 2.0.0
 Would add the following to pyproject.toml: 2.0.0
 Would add the following to Cargo.lock: multiple-packages = 2.0.0
 Would add the following to package.json: version = 0.5.0
-Would add the following to FIRST_CHANGELOG.md: 
-## 2.0.0 ([DATE])
+Would add the following to SECOND_CHANGELOG.md: 
+## 0.5.0 ([DATE])
 
 ### Breaking Changes
 
 - New breaking feature
 
-Would add the following to SECOND_CHANGELOG.md: 
-## 0.5.0 ([DATE])
+Would add the following to FIRST_CHANGELOG.md: 
+## 2.0.0 ([DATE])
 
 ### Breaking Changes
 
@@ -21,5 +21,5 @@ Would add files to git:
   pyproject.toml
   Cargo.lock
   package.json
-  FIRST_CHANGELOG.md
   SECOND_CHANGELOG.md
+  FIRST_CHANGELOG.md

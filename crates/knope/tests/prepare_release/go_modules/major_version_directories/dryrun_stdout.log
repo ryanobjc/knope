@@ -13,10 +13,6 @@ Getting conventional commits since last release of package v1
 No tags found starting with v1/v
 Using ALL commits
 Only checking commits with scopes: ["v1"]
-Determining new version for v1
-commit fix(v1): A fix
-	implies rule PATCH
-Using PATCH rule to bump from 1.0.0 to 1.0.1
 Getting conventional commits since last release of package v2
 No tags found starting with v2/v
 Using ALL commits
@@ -25,17 +21,14 @@ Determining new version for v2
 commit feat(v2): New feature
 	implies rule MINOR
 Using MINOR rule to bump from 2.0.0 to 2.1.0
+Determining new version for v1
+commit fix(v1): A fix
+	implies rule PATCH
+Using PATCH rule to bump from 1.0.0 to 1.0.1
 Would add the following to go.mod: 1.0.1
 Would add the following to sub_dir/go.mod: 1.0.1
 Would add the following to v2/go.mod: 2.1.0
 Would add the following to sub_dir/v2/go.mod: 2.1.0
-Would add the following to CHANGELOG.md: 
-## 1.0.1 ([DATE])
-
-### Fixes
-
-- A fix
-
 Would add the following to v2/CHANGELOG.md: 
 ## 2.1.0 ([DATE])
 
@@ -43,17 +36,24 @@ Would add the following to v2/CHANGELOG.md:
 
 - New feature
 
+Would add the following to CHANGELOG.md: 
+## 1.0.1 ([DATE])
+
+### Fixes
+
+- A fix
+
 Would add files to git:
   go.mod
   sub_dir/go.mod
   v2/go.mod
   sub_dir/v2/go.mod
-  CHANGELOG.md
   v2/CHANGELOG.md
+  CHANGELOG.md
 Running step Release
 Would create Git tag v1.0.1
 Would create Git tag sub_dir/v1.0.1
 Would create Git tag v2.1.0
 Would create Git tag sub_dir/v2.1.0
-Would create Git tag v1/v1.0.1
 Would create Git tag v2/v2.1.0
+Would create Git tag v1/v1.0.1

@@ -1,16 +1,5 @@
 Would add the following to Cargo.toml: version = 1.1.0
 Would add the following to pyproject.toml: 0.2.0
-Would add the following to FIRST_CHANGELOG.md: 
-## 1.1.0 ([DATE])
-
-### Features
-
-- Shared feat
-
-### Fixes
-
-- Fix for first only
-
 Would add the following to SECOND_CHANGELOG.md: 
 ## 0.2.0 ([DATE])
 
@@ -22,8 +11,19 @@ Would add the following to SECOND_CHANGELOG.md:
 
 - Shared feat
 
+Would add the following to FIRST_CHANGELOG.md: 
+## 1.1.0 ([DATE])
+
+### Features
+
+- Shared feat
+
+### Fixes
+
+- Fix for first only
+
 Would add files to git:
   Cargo.toml
   pyproject.toml
-  FIRST_CHANGELOG.md
   SECOND_CHANGELOG.md
+  FIRST_CHANGELOG.md
