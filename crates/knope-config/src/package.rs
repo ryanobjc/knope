@@ -27,6 +27,15 @@ pub struct Package {
     /// What kind of bump this package gets when one of its internal monorepo dependencies bumps.
     #[serde(default, skip_serializing_if = "InternalDependencyUpdate::is_default")]
     pub update_internal_dependencies: InternalDependencyUpdate,
+    /// If `true`, conventional commits are routed to this package by the files they changed
+    /// rather than (or in addition to) the commit's scope.
+    #[serde(default, skip_serializing_if = "<&bool>::not")]
+    pub track_paths: bool,
+    /// Explicit list of directories/files that belong to this package (used when
+    /// `track_paths` is `true`). If empty, falls back to the parent directories of the
+    /// package's own (non-dependency) `versioned_files`.
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    pub paths: Vec<RelativePathBuf>,
 }
 
 /// Policy for how this package is versioned when one of its internal monorepo dependencies
